@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+* {
+  box-sizing: border-box;
+}
+
+  .card:hover {
+    transform: perspective(5000px) rotateY(var(--rotate-y))
+      rotateX(var(--rotate-x));
+  }
+
+  .card {
+    transition:
+      box-shadow 300ms,
+      transform 75ms;
+  }
+
+  .desc-list-title::after {
+    content: '............................................................................';
+  }
+
+  .balanced {
+    text-wrap: balance;
+  }
+
+  body::-webkit-scrollbar {
+    width: 5px;
+    display: none;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    width: 5px;
+    border-radius: 10px;
+    @apply bg-neutral-800
+  }
+}
+
+@layer base {
+  body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  @supports (overflow-y: overlay) {
+    body {
+      overflow-y: overlay;
+    }
+
+    body::-webkit-scrollbar {
+      display: block;
+      @apply bg-neutral-950
+    }
+  }
+}
